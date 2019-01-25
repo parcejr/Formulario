@@ -19,25 +19,26 @@
                 <label for="NOMBRE">NOMBRE:</label><br>
                 <input type="text" class="form form-control" id ="NOMBRE" name="nombre" v-model="nombre" ><br>
                 <label for="EDAD">EDAD:</label><br>
-                <input type="number" class="form form-control" id ="EDAD" name="edad" v-model="edad" > <br>
+                <input type="number" class="form form-control" id ="EDAD" name="edad" v-model.number="edad" > <br>
                 <label for="EMAIL">EMAIL</label>
                 <input type="text"  class="form form-control" id= "EMAIL" name="email" v-model="email" ><br>
                 <label for="TELEFONO">TELEFONO</label>
-                <input type="number" class="form form-control" id = "TELEFONO" name="telefono" v-model.number="telefono"><br>
+                <input type="number" class="form form-control" id = "TELEFONO" name="telefono" v-model="telefono"><br>
                 <label for="DIRECCION"> DIRECCION</label>
                 <input type="text" class="form form-control" id="DIRECCION" name="direccion" v-model="direccion" ><br>
                 <label for="CELULAR"> CELULAR</label>
-                <input type="number" class="form form-control" id="CELULAR" name="celular" v-model.number="celular" ><br>
+                <input type="number" class="form form-control" id="CELULAR" name="celular" v-model="celular" ><br>
                 <label for="select1"> AREA DE TRABAJO</label><br>
                 <select required name="area_trabajo" id="select1"  v-model="selected" class="custom-select mb-5">
-                    <option value="EquiposElectromecanicos"> Equipos Electromecanicos</option>
-                    <option value="EquiposElectromecanicosGestion">Equipos Electromecanicos Gestion</option>
-                    <option value="GestionImplementación">Gestion Implementación</option>
-                    <option value="Implementacion"> Implementacion</option>
-                    <option value="RedTransporte"> Red De Transporte</option>
-                    <option value="RedTransporteCalidadDatosRF">Red De Transporte RF - Calidad Red De Datos </option>
-                    <option value="RF-CalidadDatos-RF-PlaneacionDiseño"> RF - Calidad De Datos RF Planeación De Diseño</option>
-                </select> 
+                    <option :value="valor[0]" selected > SELECCIONE UNA OPCION</option>
+                    <option :value="valor[1]"> Equipos Electromecanicos</option>
+                    <option :value="valor[2]">Equipos Electromecanicos Gestion</option>
+                    <option :value="valor[3]">Gestion Implementación</option>
+                    <option :value="valor[4]"> Implementacion</option>
+                    <option :value="valor[5]"> Red De Transporte</option>
+                    <option :value="valor[6]">Red De Transporte RF - Calidad Red De Datos </option>
+                    <option :value="valor[7]"> RF - Calidad De Datos RF Planeación De Diseño</option>
+                </select>
                 <div class="alert alert-warning" v-for="error of errores">{{error}}</div>
                 <input type="submit" value="Enviar" class="btn btn-primary float-right"><br>
             </form>
