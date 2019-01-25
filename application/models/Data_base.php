@@ -20,7 +20,13 @@
             $recibir = $this->db->query('SELECT * FROM campos');
             // $recibir1 = $recibir-> result();
             // var_dump($recibir1);
-            return  $recibir;
+            return  $recibir->result_array();
+        }
+
+        public function datos()
+        {
+            $query = $this->db->get("campos");
+            return $query->result_array();
         }
         public function eliminando_tabla($dato){
             $this->db->query('DELETE FROM campos WHERE id= '.$dato.'');

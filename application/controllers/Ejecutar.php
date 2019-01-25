@@ -17,8 +17,16 @@
             // $datosTabla1 = $datosTabla -> result();             
             // var_dump($datosTabla1);
             $datos_tabla = $this->Data_base->mostrar();
-            $datos['arreglo'] = $datos_tabla -> result_array();
+            $datos['arreglo'] = $datos_tabla;
             $this->load->view('Formulario/tabla.php', $datos);
+        }
+
+        public function ajax()
+        {
+            $post = $this->input->post("parametro_para_enviar_a_php");
+            print_r($post);
+            $a = $this->Data_base->datos();
+            echo json_encode($a);
         }
         public function guardar()
         {
