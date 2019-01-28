@@ -7,10 +7,6 @@
             $this->load->database();
         }
 
-        public function guardarDB(){
-        
-        }
-
         public function guardarCI($data){    
             $query =$this->db->query('INSERT INTO campos(nombre,edad,email,telefono,direccion,celular,area_trabajo) VALUES("'.$data[0].'","'.$data[1].'","'.$data[2].'","'.$data[3].'","'.$data[4].'","'.$data[5].'","'.$data[6].'")');
             
@@ -23,9 +19,8 @@
             return  $recibir->result_array();
         }
 
-        public function datos()
-        {
-            $query = $this->db->get("campos");
+        public function datos(){
+            $query = $this->db->query('SELECT * FROM campos');
             return $query->result_array();
         }
         public function eliminando_tabla($dato){

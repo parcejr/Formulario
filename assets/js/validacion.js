@@ -23,7 +23,9 @@ const vm = new Vue({
       this.nombre = this.nombre.toLowerCase();
     },
     getUsers(){
-      fetch('http://localhost/Formulario/index.php/Ejecutar/Ajax').then(data => data.json()).then(data =>{
+      fetch('http://localhost/Formulario/index.php/Ejecutar/Ajax',{
+        method: 'POST'
+      }).then(data => data.json()).then(data =>{
           for(item of data){
             this.comp_nombre.push(item);
           }
