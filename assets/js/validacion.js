@@ -9,18 +9,41 @@ const vm = new Vue({
     direccion: null,
     celular: null,
     selected: null,
-    valor: [null, 'equipos_electromecanicos','equipo_electromecanicos_Gestión','Gestión_implementación','implementación','red_transporte','Red_De_Transporte_RF__Calidad_Red_De_Datos','RF-Calidad_De_Datos_RF_Planeación_De_Diseño']
+    valor: [null, 'equipos_electromecanicos','equipo_electromecanicos_Gestión','Gestión_implementación','implementación','red_transporte','Red_De_Transporte_RF__Calidad_Red_De_Datos','RF-Calidad_De_Datos_RF_Planeación_De_Diseño'],
+    comp_nombre:[]
+  },
+  created(){
+    this.getUsers();
+  },
+  updated() {
+    this.lowercase();
   },
   methods:{
+    lowercase(){
+      this.nombre = this.nombre.toLowerCase();
+    },
+    getUsers(){
+      fetch('http://localhost/Formulario/index.php/Ejecutar/Ajax').then(data => data.json()).then(data =>{
+          for(item of data){
+            this.comp_nombre.push(item);
+          }
+      }) 
+    },
     
     revisar(e){
       this.errores = [];
-      console.log(this.celular);
-      console.log(this.telefono);
       this.dato = this.selected
       if(this.nombre == null || this.nombre.length == 0 || /^\s+$/.test(this.nombre)){
         this.errores.push('Error!! en el campo nombre');   
       }
+      for( let value of this.comp_nombre){
+         if( value.nombre == this.nombre){
+           this.errores.push('Este nombre ya existe en la base de datos');
+           break;
+         }
+      }
+
+
       if(!(/\w+([-+.']\w+)*@\w+([-.]\w+)/.test(this.email))){
         this.errores.push('Tu correo electronico no es valido');
       }
@@ -56,9 +79,7 @@ const vm = new Vue({
       if(!this.errores.length){
         return true;
       }
-      e.preventDefault();
-      
-      
+      e.preventDefault();  
     }
   }
 })

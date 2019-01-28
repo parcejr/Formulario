@@ -12,11 +12,12 @@
 <body>
     
     <div class="row container" id="app">
-        <div class="col-md-3"></div>
+        <div class="col-md-3">
+        </div>
         <div class="col-md-6 bordado">
             <h1 align="center">TRANSMISIÓN</h1>
             <form  id="form1" @submit="revisar" action="index.php/Ejecutar/guardar" method="POST">
-                <label for="NOMBRE">NOMBRE:</label><br>
+                <label for="NOMBRE">NOMBRE: </label><br>
                 <input type="text" class="form form-control" id ="NOMBRE" name="nombre" v-model="nombre" ><br>
                 <label for="EDAD">EDAD:</label><br>
                 <input type="number" class="form form-control" id ="EDAD" name="edad" v-model.number="edad" > <br>
