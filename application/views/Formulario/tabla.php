@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>TABLA</title>
     <style>
     .formul{
@@ -26,7 +27,7 @@
         <table id="book-table" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th style = "display: none">#</th>
                     <th>NOMBRE</th>
                     <th>EDAD</th>
                     <th>EMAIL</th>
@@ -40,7 +41,7 @@
                 <tbody>
                 <?php foreach($arreglo as $row): ?>
                     <tr>
-                        <th><?php echo $row['id'] ?></th>
+                        <th style = "display: none"><?php echo $row['id'] ?></th>
                         <td><?php echo $row['nombre'] ?></td>
                         <td><?php echo $row['edad'] ?></td>
                         <td><?php echo $row['email'] ?></td>
@@ -50,7 +51,7 @@
                         <td><?php echo $row['area_trabajo'] ?></td>
                         <th>
                             <a id="delete" title="ELIMINAR" href="http://localhost/Formulario/index.php/Ejecutar/eliminar/<?php echo $row['id'] ?>"><i class="far fa-trash-alt"></i></a>
-                            <a class="edit" title="EDITAR"><i class="fas fa-edit edit" title="EDITAR"></i></a>
+                            <a class="edit" id="edit" title="EDITAR"><i class="fas fa-edit edit" title="EDITAR"></i></a>
                                
                         </th>    
                     </tr>
@@ -60,15 +61,16 @@
             <div class="modal fade bd-example-modal-lg" id="formModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content formul">
-                                        <form action="actualizar" method = "POST" onsubmit="return validar()" id="form1">
+                                        <form action="actualizar" @submit="getUsers" method = "POST" id="form1">
                                         <h1 align="center"> EDITAR </h1>
                                             <input type="text" style="display:none" class="form form-control" id ="ID" name="id"> <br>
                                             <label for="">NOMBRE:</label><br>
-                                            <input type="text" class="form form-control" id ="NOMBRE" name="nombre"><br>
+                                            <input type="text" class="form form-control"  v-model="name" id ="NOMBRE" name="nombre"><br>
                                             <label for="">EDAD:</label><br>
                                             <input type="text" class="form form-control" id ="EDAD" name="edad"><br>
                                             <label for="">EMAIL</label>
-                                            <input type="text" class="form form-control" id= "EMAIL" name="email"><br>
+                                            <input type="text" v-model="email" class="form form-control" id= "EMAIL" name="email"><br>
+                                            <p>{{name}}</p>
                                             <label for="">TELEFONO</label>
                                             <input type="text" class="form form-control" id = "TELEFONO" name="telefono"><br>
                                             <label for=""> DIRECCION</label>
@@ -95,7 +97,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             tabla_contactos = $('#book-table').DataTable();
-
+        });
             $('#book-table').on('click', 'a.edit',function (e) {
                 const data = tabla_contactos.row( $(this).parents('tr') ).data();
                 console.log(data)
@@ -109,18 +111,8 @@
                 $('#DIRECCION').val(data[5])
                 $('#CELULAR').val(data[6])
                 $('#select1').val(data[7])
-            })
-        //    $("#delete").on("click",function(e){
-        //         const boton = $(this);
-        //         const row = boton.parents('tr');
-        //         const id = tabla_contactos.row( row ).data()[0];
-
-                
-        //     });
-        
-
-
-        });
+            });       
     </script> 
+    <script src="/../Formulario/assets/js/validacion_editar.js"></script>
 </body>
 </html>
