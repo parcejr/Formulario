@@ -64,6 +64,9 @@
                     <form action="actualizar" @submit="validaciones" method = "POST" id="form1">
                         <h1 align="center"> EDITAR </h1>
                         <input type="text" style="display:none" class="form form-control" id ="ID" name="id"> <br>
+
+                        <input type="hidden" class="form form-control"  id ="NOMBRE_ant" name="nombre_ant">
+
                         <label for="">NOMBRE:</label><br>
                         <input type="text" class="form form-control"  id ="NOMBRE" name="nombre"><br>
                         <label for="">EDAD:</label><br>
@@ -107,6 +110,7 @@
 
             $('#ID').val(data[0])
             $('#NOMBRE').val(data[1])
+            $('#NOMBRE_ant').val(data[1])
             $('#EDAD').val(data[2])
             $('#EMAIL').val(data[3])
             $('#TELEFONO').val(data[4])

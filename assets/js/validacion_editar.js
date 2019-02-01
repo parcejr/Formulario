@@ -32,18 +32,34 @@ const vm = new Vue({
         direccion: null,
         celular: null,
         selected: '',
+        antiguo: '',
+        BD:[],
         
     },
+    created(){
+        this.baseDatos();
+    },
+
     methods:{
-        validaciones(e){
+        validaciones(e){    
             this.errores = [];
-            this.nombre = document.getElementById('NOMBRE').value
+            this.nombre = document.getElementById('NOMBRE').value;
             this.email = document.getElementById('EMAIL').value;
             this.edad  = document.getElementById('EDAD').value;
             this.telefono = document.getElementById('TELEFONO').value;
             this.direccion = document.getElementById('DIRECCION').value;
             this.celular = document.getElementById('CELULAR').value;
             this.selected = document.getElementById('select1').selectIndex;
+            this.antiguo = document.getElementById('NOMBRE_ant').value;
+            for(item of this.BD){
+                
+
+                console.log(this.nombre);
+                if(item.nombre === this.nombre && item.nombre != this.antiguo){
+                    this.errores.push('Este nombre ya existe en tu base de datos');
+                }
+            }
+            
             
             if(this.nombre == null || this.nombre.length == 0 || /^\s+$/.test(this.nombre)){
                 this.errores.push('Error!! en el campo nombre');   
@@ -72,6 +88,15 @@ const vm = new Vue({
               }
               e.preventDefault();  
 
+        },
+        baseDatos(){
+            fetch('http://localhost/Formulario/index.php/Ejecutar/ajax', {
+                method: 'POST'
+            }).then(data => data.json()).then(data =>{
+                for(item of data){
+                    this.BD.push(item);
+                }
+            })
         }
     }
 })
