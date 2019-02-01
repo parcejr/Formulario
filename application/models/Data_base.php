@@ -27,7 +27,7 @@
             $this->db->query('DELETE FROM campos WHERE id= '.$dato.'');
         }
         public function actualizarCI($datos){
-            $this->db->query("UPDATE campos SET nombre='$datos[1]', edad ='$datos[2]',  email ='$datos[3]', telefono='$datos[4]', direccion='$datos[5]', celular='$datos[6]' WHERE id = $datos[0]");           
+            $this->db->query("UPDATE campos SET nombre='$datos[1]', edad ='$datos[2]',  email ='$datos[3]',telefono='$datos[4]', direccion='$datos[5]', celular='$datos[6]', area_trabajo = '$datos[7]'  WHERE id = $datos[0]");           
             
         }
     }   
