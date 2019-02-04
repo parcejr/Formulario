@@ -13,24 +13,16 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="/../Formulario/assets/css/style_tabla.css">
     <title>TABLA</title>
-    <style>
-        .red{
-            color: #CC0033;
-        }
-        .blue{
-            color: #6666FF;
-        }
-    
-    </style>
 </head>
-<body>
-    
+<body>   
     <div class="container"> 
-        <h1>Book List</h1>
-        <table id="book-table" class="table table-striped table-bordered" style="width:100%">
+        <h1>Usuarios</h1>
+        <br>
+        <table id="book-table" class="table table-striped table-bordered TLetra" style="width:100%">
             <thead>
-                <tr>
+                <tr class="trs">
                     <th style = "display: none">#</th>
                     <th>NOMBRE</th>
                     <th>EDAD</th>
@@ -62,42 +54,82 @@
                 </tr>
             <?php endforeach ?>                    
             </tbody>
-        </table>             
+        </table> 
+        <!-- MODAL -->
         <div class="modal fade bd-example-modal-lg" id="formModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-lg border border-primary rounder">
                 <div class="modal-content formul container p-5">
+                    <div class="modal-header">
+                        <h1 class="textStyle">EDITAR</h1>
+                    </div>
                     <form action="actualizar" @submit="validaciones" method = "POST" id="form1">
-                        <h1 align="center"> EDITAR </h1>
-                        <input type="text" style="display:none" class="form form-control" id ="ID" name="id"> <br>
+                        <div class="modal-body">
+                            <input type="text" style="display:none" class="form form-control" id ="ID" name="id"> <br>
 
-                        <input type="hidden" class="form form-control"  id ="NOMBRE_ant" name="nombre_ant">
-
-                        <label for="">NOMBRE:</label><br>
-                        <input type="text" class="form form-control"  id ="NOMBRE" name="nombre"><br>
-                        <label for="">EDAD:</label><br>
-                        <input type="text" class="form form-control" id ="EDAD" name="edad"><br>
-                        <label for="">EMAIL:</label>
-                        <input type="text" class="form form-control" id= "EMAIL" name="email"><br>
-                        <label for="">TELEFONO:</label>
-                        <input type="text" class="form form-control" id = "TELEFONO" name="telefono"><br>
-                        <label for=""> DIRECCION:</label>
-                        <input type="text" class="form form-control" id="DIRECCION" name="direccion"><br>
-                        <label for=""> CELULAR:</label>
-                        <input type="text" class="form form-control" id="CELULAR" name="celular"><br>
-                        <label for=""> AREA DE TRABAJO:</label><br>
-                        <select  required  name="area_trabajo" class = "custom-select" id="select1">    
-                            <option value="EquiposElectromecanicos"> Equipos Electromecanicos</option>
-                            <option value="EquiposElectromecanicosGestion">Equipos Electromecanicos Gestion</option>
-                            <option value="GestionImplementación">Gestion Implementación</option>
-                            <option value="Implementacion"> Implementacion</option>
-                            <option value="RedTransporte"> Red De Transporte</option>
-                            <option value="RedTransporteCalidadDatosRF">Red De Transporte RF - Calidad Red De Datos </option>
-                            <option value="RF-CalidadDatos-RF-PlaneacionDiseño"> RF - Calidad De Datos RF Planeación De Diseño</option>
-                        </select>
-                        <div class="alert alert-danger mt-3" v-for="item of errores">
-                            {{item}}
+                            <input type="hidden" class="form form-control"  id ="NOMBRE_ant" name="nombre_ant">
+                            <!-- NOMBRE -->
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user black"></i></span>
+                                </div><br>
+                                <input type="text" class="form form-control"  id ="NOMBRE" name="nombre"><br>
+                            </div> <br>
+                            <!-- EDAD -->
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text black"><i class="fas fa-sort-numeric-up"></i></span>
+                                </div>
+                                <input type="text" class="form form-control" id ="EDAD" name="edad"><br>
+                            </div> <br>
+                            <!-- EMAIL -->
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text black"><i class="fas fa-at"></i></span>
+                                </div>
+                                <input type="text" class="form form-control" id= "EMAIL" name="email"><br>
+                            </div><br>
+                            <!-- TELEFONO -->
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-phone black"></i></span>
+                                </div>
+                                <input type="text" class="form form-control" id = "TELEFONO" name="telefono"><br>
+                            </div> <br>
+                            <!-- DIRECCIÓN -->
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-map-marker-alt black"></i></span>
+                                </div>
+                                <input type="text" class="form form-control " id="DIRECCION" name="direccion"><br>
+                            </div><br>
+                            <!-- CELULAR -->
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-mobile-alt black"></i></span>
+                                </div>
+                                <input type="text" class="form form-control" id="CELULAR" name="celular"><br>
+                            </div> <br>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text black">AREA DE TRABAJO</span>
+                                </div>
+                                <select  required  name="area_trabajo" class = "custom-select" id="select1">
+                                    <option value="EquiposElectromecanicos"> Equipos Electromecanicos</option>
+                                    <option value="EquiposElectromecanicosGestion">Equipos Electromecanicos Gestion</option>
+                                    <option value="GestionImplementación">Gestion Implementación</option>
+                                    <option value="Implementacion"> Implementacion</option>
+                                    <option value="RedTransporte"> Red De Transporte</option>
+                                    <option value="RedTransporteCalidadDatosRF">Red De Transporte RF - Calidad Red De Datos </option>
+                                    <option value="RF-CalidadDatos-RF-PlaneacionDiseño"> RF - Calidad De Datos RF Planeación De Diseño</option>
+                                </select>    
+                            </div>
                         </div>
-                        <input type="submit" value="Actualizar" class="btn btn-primary float-right mt-3"><br>
+                        <div class="modal-footer">
+                            <div class="alert alert-danger mt-3" v-for="item of errores">
+                                {{item}}
+                            </div>
+                            <input type="submit" value="Actualizar" class="btn btn-warning float-right mt-3"><br>
+                        </div>                        
                     </form>
                 </div>
             </div>

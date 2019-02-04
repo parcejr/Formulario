@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Anton');
+.red{
+    color: #CC0033;
+}
+.blue{
+    color: #6666FF;
+}
+.black{
+    color: black;
+}
+.textStyle{
+    font-family: 'Anton', sans-serif;
+}
+.modal-header{
+    background: blue;
+    color: #fff;
+}
+.trs{
+    color: #fff;
+    background: #1E90FF;
+}
+.TLetra{
+    font-size: 13px;
+}

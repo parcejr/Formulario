@@ -15,44 +15,51 @@
         <div class="col-md-2">
         </div>
         <div class="col-md-8 bordado">
-            <h1>TRANSMISIÓN</h1> <br>
+            <h1 class="text">TRANSMISIÓN</h1> <br>
             <form  id="form1" @submit="revisar" action="index.php/Ejecutar/guardar" method="POST">
+                <!-- NOMBRE -->
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text celeste"><i class="fas fa-user"></i></span>
+                        <span class="input-group-text celeste"><i class="fas fa-user yellow"></i></span>
                     </div>
                     <input type="text" class="form form-control" placeholder="Nombre y Apellido" id ="NOMBRE" name="nombre" v-model="nombre"><br>
                 </div><br>
+                <!-- EDAD -->
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fas fa-sort-numeric-up"></i></span>
                     </div>
                     <input type="number" class="form form-control" placeholder="EDAD" id ="EDAD" name="edad" v-model.number="edad" > 
                 </div><br>
+                <!-- EMAIL -->
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text celeste"> <i class="fas fa-at"></i></span>
+                        <span class="input-group-text celeste"> <i class="fas fa-at yellow"></i></span>
                     </div>
                     <input type="text"  placeholder="EMAIL" class="form form-control" id= "EMAIL" name="email" v-model="email" ><br>
-                </div> <br>    
+                </div> <br>
+                <!-- TELEFONO -->
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-phone"></i></span>
                     </div>
                     <input type="number" :class="['form','form-control']" placeholder="TELEFONO" id = "TELEFONO" name="telefono" v-model="telefono"><br>
                 </div><br>
+                <!-- DIRECCIÓN -->
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text celeste"><i class="fas fa-map-marker-alt"></i></span>
+                        <span class="input-group-text celeste"><i class="fas fa-map-marker-alt yellow"></i></span>
                     </div>
                     <input type="text" class="form form-control" placeholder="DIRECCIÓN" id="DIRECCION" name="direccion" v-model="direccion" ><br>
                 </div> <br>
+                <!-- CELULAR -->
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
                     </div>
                     <input type="number" class="form form-control" placeholder="NUMERO DE CELULAR" id="CELULAR" name="celular" v-model="celular" ><br>
                 </div> <br>
+                <!-- AREA DE TRABAJO -->
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text" for ="select1">Area De Trabajo</span>
