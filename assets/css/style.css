@@ -1,8 +1,22 @@
 .bordado{
     margin:50px;
-    /* border: 1px solid blue; */
-    border-radius: 8px; 
+    /* border: 1px solid blue; */ 
     padding: 20px 50px 20px 50px;
-    background-color: black;
-    color: #fff;
+    
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+input{
+    border-radius: 8px;
+}
+
+.celeste{
+    color:#1E90FF;
 }

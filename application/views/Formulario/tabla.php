@@ -15,9 +15,13 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>TABLA</title>
     <style>
-    .formul{
-        padding: 40px;
-    }
+        .red{
+            color: #CC0033;
+        }
+        .blue{
+            color: #6666FF;
+        }
+    
     </style>
 </head>
 <body>
@@ -35,7 +39,7 @@
                     <th>DIRECCIÓN</th>
                     <th>CELULAR</th>
                     <th>AREA DE TRABAJO</th>
-                    <th></th>
+                    <th>Ed y El</th>
                 </tr>
             </thead>
             <tbody>
@@ -49,10 +53,11 @@
                     <td><?php echo $row['direccion'] ?></td>
                     <td><?php echo $row['celular'] ?></td>
                     <td><?php echo $row['area_trabajo'] ?></td>
-                    <th>
-                        <a id="delete" title="ELIMINAR" href="http://localhost/Formulario/index.php/Ejecutar/eliminar/<?php echo $row['id'] ?>"><i class="far fa-trash-alt"></i></a>
-                        <a class="edit" id="edit" title="EDITAR"><i class="fas fa-edit edit" title="EDITAR"></i></a>
-                            
+                    <th class="">
+                        <div class="float-right">
+                            <a class="edit" id="edit" title="EDITAR"><i class="fas fa-edit edit  mr-1 blue" title="EDITAR"></i></a>
+                            <a id="delete" title="ELIMINAR" href="http://localhost/Formulario/index.php/Ejecutar/eliminar/<?php echo $row['id'] ?>"><i class="far fa-trash-alt red"></i></a>        
+                        </div>
                     </th>    
                 </tr>
             <?php endforeach ?>                    
@@ -60,7 +65,7 @@
         </table>             
         <div class="modal fade bd-example-modal-lg" id="formModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
-                <div class="modal-content formul">
+                <div class="modal-content formul container p-5">
                     <form action="actualizar" @submit="validaciones" method = "POST" id="form1">
                         <h1 align="center"> EDITAR </h1>
                         <input type="text" style="display:none" class="form form-control" id ="ID" name="id"> <br>
@@ -71,17 +76,16 @@
                         <input type="text" class="form form-control"  id ="NOMBRE" name="nombre"><br>
                         <label for="">EDAD:</label><br>
                         <input type="text" class="form form-control" id ="EDAD" name="edad"><br>
-                        <label for="">EMAIL</label>
+                        <label for="">EMAIL:</label>
                         <input type="text" class="form form-control" id= "EMAIL" name="email"><br>
-                        <label for="">TELEFONO</label>
+                        <label for="">TELEFONO:</label>
                         <input type="text" class="form form-control" id = "TELEFONO" name="telefono"><br>
-                        <label for=""> DIRECCION</label>
+                        <label for=""> DIRECCION:</label>
                         <input type="text" class="form form-control" id="DIRECCION" name="direccion"><br>
-                        <label for=""> CELULAR</label>
+                        <label for=""> CELULAR:</label>
                         <input type="text" class="form form-control" id="CELULAR" name="celular"><br>
-                        <label for=""> AREA DE TRABAJO</label><br>
+                        <label for=""> AREA DE TRABAJO:</label><br>
                         <select  required  name="area_trabajo" class = "custom-select" id="select1">    
-                            <option disabled> SELECCIONE UNO</option> 
                             <option value="EquiposElectromecanicos"> Equipos Electromecanicos</option>
                             <option value="EquiposElectromecanicosGestion">Equipos Electromecanicos Gestion</option>
                             <option value="GestionImplementación">Gestion Implementación</option>

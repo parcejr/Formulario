@@ -19,7 +19,9 @@ const vm = new Vue({
   },
   //ejecutar la función lowecase, cuando un dato es cambiado, la ejecuta
   updated() {
-    this.lowercase();
+    if(!this.nombre == null || !this.nombre == ''){
+      this.lowercase();
+    }
   },
 
   // funciones
