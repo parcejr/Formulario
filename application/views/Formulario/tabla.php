@@ -39,7 +39,7 @@
                     <th>DIRECCIÓN</th>
                     <th>CELULAR</th>
                     <th>AREA DE TRABAJO</th>
-                    <th>Ed y El</th>
+                    <th>Editar y Eliminar</th>
                 </tr>
             </thead>
             <tbody>
