@@ -13,6 +13,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="/../Formulario/assets/css/style_tabla.css">
     <title>TABLA</title>
 </head>
@@ -48,7 +49,7 @@
                     <th class="">
                         <div class="float-right">
                             <a class="edit" id="edit" title="EDITAR"><i class="fas fa-edit edit  mr-1 blue" title="EDITAR"></i></a>
-                            <a id="delete" title="ELIMINAR" href="http://localhost/Formulario/index.php/Ejecutar/eliminar/<?php echo $row['id'] ?>"><i class="far fa-trash-alt red"></i></a>        
+                            <a id="delete" title="ELIMINAR" onclick="eliminar_registro(<?php echo $row['id'] ?>)"><i class="far fa-trash-alt red"></i></a>        
                         </div>
                     </th>    
                 </tr>
@@ -128,13 +129,13 @@
                             <div class="alert alert-danger mt-3" v-for="item of errores">
                                 {{item}}
                             </div>
-                            <input type="submit" value="Actualizar" class="btn btn-warning float-right mt-3"><br>
+                            <input type="submit" id="envio" value="Actualizar" class="btn btn-warning float-right mt-3"><br>
                         </div>                        
                     </form>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
     <script type="text/javascript">
         $(document).ready(function() {
             tabla_contactos = $('#book-table').DataTable();

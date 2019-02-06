@@ -22,3 +22,6 @@
 .TLetra{
     font-size: 13px;
 }
+#NOMBRE{
+    text-transform: lowercase;
+}

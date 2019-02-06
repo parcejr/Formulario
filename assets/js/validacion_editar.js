@@ -1,28 +1,7 @@
-// const form = document.querySelector('#form1');
-// form.addEventListener('click', function(e){
-//     const edad = document.getElementById('EDAD').value;
-//     const email = document.getElementById('EMAIL').value;
-//     const telefono = document.getElementById('TELEFONO').value;
-//     const nombre = document.getElementById('NOMBRE').value;
-//     const direccion = document.getElementById('DIRECCION').value;
-//     const celular = document.getElementById('CELULAR').value;
-//     const area_trabajo = document.getElementById('select1').selectIndex;
-//     const errors = [];
 
-//     if(!(/\w+([-+.']\w+)*@\w+([-.]\w+)/.test(email))){
-//         errors.push('error');
-//     }
-//     console.log(errors);
-
-//     if(!errors.length){
-//         return true;
-//     }
-//     e.preventDefault();
-
-
-// })
 const vm = new Vue({
     el:'#form1',
+    // inicializando variables
     data:{
         errores: [],
         nombre:null,
@@ -36,13 +15,14 @@ const vm = new Vue({
         BD:[],
         
     },
+    // cargando base de datos antes de cargar el DOM
     created(){
         this.baseDatos();
     },
-
     methods:{
-        validaciones(e){    
+        validaciones(e){ 
             this.errores = [];
+            // valor de las variables
             this.nombre = document.getElementById('NOMBRE').value;
             this.email = document.getElementById('EMAIL').value;
             this.edad  = document.getElementById('EDAD').value;
@@ -51,16 +31,15 @@ const vm = new Vue({
             this.celular = document.getElementById('CELULAR').value;
             this.selected = document.getElementById('select1').selectIndex;
             this.antiguo = document.getElementById('NOMBRE_ant').value;
-            for(item of this.BD){
-                
-
+            
+            // condicional de nombre no repetidos en la base de datos
+            for(item of this.BD){   
                 console.log(this.nombre);
                 if(item.nombre === this.nombre && item.nombre != this.antiguo){
                     this.errores.push('Este nombre ya existe en tu base de datos');
                 }
             }
-            
-            
+            // validaciones
             if(this.nombre == null || this.nombre.length == 0 || /^\s+$/.test(this.nombre)){
                 this.errores.push('Error!! en el campo nombre');   
             }
@@ -87,8 +66,8 @@ const vm = new Vue({
                 return true;
               }
               e.preventDefault();  
-
         },
+        // obteniendo arreglo de la base de datos, y añadiendolo a una variable
         baseDatos(){
             fetch('http://localhost/Formulario/index.php/Ejecutar/ajax', {
                 method: 'POST'
@@ -97,6 +76,33 @@ const vm = new Vue({
                     this.BD.push(item);
                 }
             })
-        }
+        },
     }
 })
+// alerta de eliminación     
+function eliminar_registro(id) {
+    swal({
+        title :"CONFIRMACIÓN",
+        text: "¿Esta seguro que quiere eliminar este usuario?",
+        buttons :{
+            cancelar : true,
+            confirmar : "Enviar"
+        }
+    }).then(val => {
+        console.log(val);
+        if(val == "confirmar"){
+            window.location = "http://localhost/Formulario/index.php/Ejecutar/eliminar/" + id;
+            Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success')
+        }
+    });
+}
+
+    
+    
+
+
+
+    
