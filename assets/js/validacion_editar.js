@@ -99,16 +99,6 @@ function eliminar_registro(id) {
         }
     });
 }
-    function actualizar(){             
-        swal({
-            title: "TU BASE DE DATOS A SIDO ACTUALIZADA CORRECTAMENTE",
-            icon: "success",
-        }).then(val => { 
-            if(val === true){ 
-                console.log(val);
-            }
-        })    
-    }
 
     
     

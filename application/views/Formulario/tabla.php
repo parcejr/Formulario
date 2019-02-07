@@ -80,7 +80,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text black"><i class="fas fa-sort-numeric-up"></i></span>
                                 </div>
-                                <input type="text" class="form form-control" id ="EDAD" name="edad"><br>
+                                <input type="number" class="form form-control" id ="EDAD" name="edad"><br>
                             </div> <br>
                             <!-- EMAIL -->
                             <div class="input-group">
@@ -94,7 +94,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-phone black"></i></span>
                                 </div>
-                                <input type="text" class="form form-control" id = "TELEFONO" name="telefono"><br>
+                                <input type="number" class="form form-control" id = "TELEFONO" name="telefono"><br>
                             </div> <br>
                             <!-- DIRECCIÓN -->
                             <div class="input-group">
@@ -108,7 +108,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-mobile-alt black"></i></span>
                                 </div>
-                                <input type="text" class="form form-control" id="CELULAR" name="celular"><br>
+                                <input type="number" class="form form-control" id="CELULAR" name="celular"><br>
                             </div> <br>
                             <div class="input-group">
                                 <div class="input-group-prepend">
