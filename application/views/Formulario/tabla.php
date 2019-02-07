@@ -129,7 +129,7 @@
                             <div class="alert alert-danger mt-3" v-for="item of errores">
                                 {{item}}
                             </div>
-                            <input type="submit" id="envio" value="Actualizar" class="btn btn-warning float-right mt-3"><br>
+                            <input type="submit" id="envio" value="Actualizar" onclick = "actualizar()" class="btn btn-warning float-right mt-3"><br>
                         </div>                        
                     </form>
                 </div>
